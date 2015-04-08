@@ -30,4 +30,4 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
-vim +PluginInstall
+vim +PluginInstall! +qa
