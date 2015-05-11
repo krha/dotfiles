@@ -101,7 +101,7 @@ alias l='ls -CF'
 alias sl='subl'
 
 alias ga='git add '
-alias gg='git grep -n '
+alias gg='git grep -n --color'
 alias gs='git status '
 alias gc='git commit -a -F- <<EOF '
 alias gp='git push '
