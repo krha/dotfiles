@@ -30,6 +30,8 @@ Bundle 'gabrielelana/vim-markdown'
 Plugin 'chrisbra/changesPlugin'
 " status/tabline for vim
 Plugin 'bling/vim-airline'
+" Git diff changes: next change ]c, previous change [c
+Plugin 'airblade/vim-gitgutter'
 
 
 " All of your Plugins must be added before the following line
