@@ -105,10 +105,10 @@ nmap <silent> ,/ :nohlsearch<CR>
 "let Tlist_Ctags_Cmd = "/usr/bin/ctags"
 "let Tlist_Inc_Winwidth = 0
 "let Tlist_Exit_OnlyWindow = 1
-"let Tlist_Auto_Open = 0
 "let Tlist_Use_Right_Window = 1
 nmap <F7> :TagbarToggle<CR>
 "let g:tagbar_autoclose = 1
+let g:tagbar_autoopen = 0
 let g:tagbar_indent = 1
 let g:tagbar_width = 30
 
@@ -118,7 +118,7 @@ nmap <F9> :NERDTreeToggle<CR>
 let g:nerdtree_tabs_open_on_console_startup=0
 let g:nerdtree_tabs_autoclose=1
 let g:nerdtree_tabs_focus_on_files=1
-autocmd VimEnter * nested :TagbarOpen
+"autocmd VimEnter * nested :TagbarOpen
 
 "=============== source explorer =============="
 nmap <F8> :SrcExplToggle<CR>
@@ -157,3 +157,6 @@ let g:pymode_breakpoint_cmd = 'import pdb;pdb.set_trace()'
 let g:pymode_rope = 0
 let g:pymode_lint = 0
 
+"=============== Custom command =============="
+command -nargs=+ GG execute 'silent Ggrep!' <q-args> | cw | redraw!
+"command -nargs=+ GG execute 'silent Ggrep! --color' <q-args> | cw
