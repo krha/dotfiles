@@ -155,8 +155,18 @@ let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_bind = '<leader>b'
 let g:pymode_breakpoint_cmd = 'import pdb;pdb.set_trace()'
 let g:pymode_rope = 0
-let g:pymode_lint = 0
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 0  " Only when type :PymodeLint
+let g:pymode_lint_message = 1
+let g:pymode_lint_cwindow = 1
+
+"=============== Vim grep =============="
+nmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+vmap <leader>g <Plug>GrepOperatorOnCurrentDirectory
+nmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
+vmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
 
 "=============== Custom command =============="
 command -nargs=+ GG execute 'silent Ggrep!' <q-args> | cw | redraw!
-"command -nargs=+ GG execute 'silent Ggrep! --color' <q-args> | cw
+
+nnoremap <C-G> :GG <cword><CR>
