@@ -32,7 +32,7 @@ Plugin 'chrisbra/changesPlugin'
 Plugin 'bling/vim-airline'
 " Git diff changes: next change ]c, previous change [c
 Plugin 'airblade/vim-gitgutter'
-
+let g:gitgutter_max_signs = 5000
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -87,6 +87,8 @@ endif
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q gqap
+autocmd bufreadpre *.tex setlocal textwidth=70
+
 
 nnoremap j gj
 nnoremap k gk
