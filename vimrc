@@ -13,6 +13,7 @@ Plugin 'fugitive.vim'
 Plugin 'The-NERD-tree'
 " Color scheme
 Plugin 'Solarized'
+Plugin 'junegunn/seoul256.vim'
 " comment shortcut using gc
 Plugin 'tpope/vim-commentary'
 " Python Auto-completion
@@ -33,6 +34,12 @@ Plugin 'bling/vim-airline'
 " Git diff changes: next change ]c, previous change [c
 Plugin 'airblade/vim-gitgutter'
 let g:gitgutter_max_signs = 5000
+" Use Vim as a writing tool
+Plugin 'reedes/vim-pencil'
+" focus on working paragraph
+Plugin 'junegunn/limelight.vim'
+Plugin 'junegunn/goyo.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,20 +81,19 @@ set t_Co=256
 syntax on
 
 if &t_Co >= 256 || has("gui_running")
-	"colorscheme proton
 	colorscheme zenburn
-	"syntax enable
-	set background=dark
-	"set background=light
-	let g:solarized_termcolors=256
 	"colorscheme solarized
+        "let g:seoul256_background = 236 " 233 (darkest) ~ 239 (lightest)
+	"colorscheme seoul256
+	"syntax enable
+	set background=dark "or light
+	"let g:solarized_termcolors=256
 endif
 
 
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q gqap
-autocmd bufreadpre *.tex setlocal textwidth=70
 
 
 nnoremap j gj
@@ -172,3 +178,29 @@ vmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
 command -nargs=+ GG execute 'silent Ggrep!' <q-args> | cw | redraw!
 
 nnoremap <C-G> :GG <cword><CR>
+
+
+"=============== Vim-Pencil =============="
+let g:pencil#cursorwrap = 1     " 0=disable, 1=enable (def)
+"let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+let g:pencil#textwidth = 70
+
+augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd call pencil#init()
+    autocmd FileType text         call pencil#init()
+    autocmd FileType tex          call pencil#init()
+augroup END
+
+"=============== Limelight =============="
+" Color name (:help cterm-colors) or ANSI code
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 241
+
+" Color name (:help gui-colors) or RGB color
+let g:limelight_conceal_guifg = 'DarkGray'
+let g:limelight_conceal_guifg = '#777777'
+
+" Goyo.vim integration
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
