@@ -39,6 +39,11 @@ Plugin 'reedes/vim-pencil'
 " focus on working paragraph
 Plugin 'junegunn/limelight.vim'
 Plugin 'junegunn/goyo.vim'
+" vim-online-thesaurus. Shortcut <LocalLeader>K
+Plugin 'beloglazov/vim-online-thesaurus'
+" Outline structure for VIM and Markdown
+Plugin 'VOoM'
+
 
 
 " All of your Plugins must be added before the following line
@@ -95,7 +100,6 @@ endif
 vmap Q gq
 nmap Q gqap
 
-
 nnoremap j gj
 nnoremap k gk
 
@@ -129,16 +133,16 @@ let g:nerdtree_tabs_focus_on_files=1
 "autocmd VimEnter * nested :TagbarOpen
 
 "=============== source explorer =============="
-nmap <F8> :SrcExplToggle<CR>
-nmap <C-H> <C-W>h
-nmap <C-J> <C-W>j
-nmap <C-K> <C-W>k
-nmap <C-L> <C-W>l
-let g:SrcExpl_winHeight = 8
-let g:SrcExpl_refreshTime = 100
-let g:SrcExpl_jumpKey = "<ENTER>"
-let g:SrcExpl_gobackKey = "<SPACE>"
-let g:SrcExpl_isUpdateTags = 0
+"nmap <F8> :SrcExplToggle<CR>
+"nmap <C-H> <C-W>h
+"nmap <C-J> <C-W>j
+"nmap <C-K> <C-W>k
+"nmap <C-L> <C-W>l
+"let g:SrcExpl_winHeight = 8
+"let g:SrcExpl_refreshTime = 100
+"let g:SrcExpl_jumpKey = "<ENTER>"
+"let g:SrcExpl_gobackKey = "<SPACE>"
+"let g:SrcExpl_isUpdateTags = 0
 
 " ==============line width =============="
 highlight OverLength ctermbg=black ctermfg=yellow guibg=#592929
@@ -176,8 +180,11 @@ vmap <leader><leader>g <Plug>GrepOperatorWithFilenamePrompt
 
 "=============== Custom command =============="
 command -nargs=+ GG execute 'silent Ggrep!' <q-args> | cw | redraw!
-
 nnoremap <C-G> :GG <cword><CR>
+
+" find cursor word in dictionary, works only in Mac
+nmap <F5> :!open /Applications/Google\ Chrome.app http://dic.daum.net/search.do?q=<cword><CR>
+
 
 
 "=============== Vim-Pencil =============="
@@ -201,6 +208,39 @@ let g:limelight_conceal_ctermfg = 241
 let g:limelight_conceal_guifg = 'DarkGray'
 let g:limelight_conceal_guifg = '#777777'
 
-" Goyo.vim integration
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+
+"=============== Goyo =============="
+function! s:goyo_enter()
+    silent !tmux set status off
+    set noshowmode
+    set noshowcmd
+    set scrolloff=999
+    Limelight
+    "Goyo 80%
+    "Voom latex
+endfunction
+
+function! s:goyo_leave()
+    silent !tmux set status on
+    set showmode
+    set showcmd
+    set scrolloff=5
+    Limelight!
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+
+"=============== Synonym - Online thesaurus =============="
+nnoremap <unique> <LocalLeader>s :OnlineThesaurusCurrentWord<CR>
+vnoremap <unique> <LocalLeader>s y:Thesaurus <C-r>"<CR>
+
+
+"=============== Voom =============="
+let g:voom_tree_placement = "right"
+let g:voom_tree_width = 30
+"let g:voom_tree_height = 40
+nmap <F8> :Voom latex<CR>
+
+
