@@ -189,14 +189,14 @@ nmap <F5> :!open /Applications/Google\ Chrome.app http://dic.daum.net/search.do?
 
 "=============== Vim-Pencil =============="
 let g:pencil#cursorwrap = 1     " 0=disable, 1=enable (def)
-"let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+let g:pencil#wrapModeDefault = 'hard'   " default is 'hard'
 let g:pencil#textwidth = 70
 
 augroup pencil
     autocmd!
+    autocmd FileType tex          call pencil#init()
     autocmd FileType markdown,mkd call pencil#init()
     autocmd FileType text         call pencil#init()
-    autocmd FileType tex          call pencil#init()
 augroup END
 
 "=============== Limelight =============="
@@ -216,6 +216,7 @@ function! s:goyo_enter()
     set noshowcmd
     set scrolloff=999
     Limelight
+    Pencil
     "Goyo 80%
     "Voom latex
 endfunction
@@ -226,6 +227,7 @@ function! s:goyo_leave()
     set showcmd
     set scrolloff=5
     Limelight!
+    Pencil!
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
