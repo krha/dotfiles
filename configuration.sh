@@ -3,7 +3,7 @@
 
 # map caps lock to esc key
 # ref: http://askubuntu.com/questions/363346/how-to-permanently-switch-caps-lock-and-esc
-dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
+#dconf write /org/gnome/desktop/input-sources/xkb-options "['caps:escape']"
 
 # git configuration
 git config --global user.name "Kiryong Ha"

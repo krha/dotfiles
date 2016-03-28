@@ -43,6 +43,8 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'beloglazov/vim-online-thesaurus'
 " Outline structure for VIM and Markdown
 Plugin 'VOoM'
+" HHVM Hack plugin
+Plugin 'git://github.com/hhvm/vim-hack.git'
 
 
 
@@ -227,7 +229,7 @@ function! s:goyo_leave()
     set showcmd
     set scrolloff=5
     Limelight!
-    Pencil!
+    NoPencil
 endfunction
 
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
