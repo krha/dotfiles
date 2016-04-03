@@ -197,7 +197,7 @@ let g:pencil#textwidth = 70
 augroup pencil
     autocmd!
     autocmd FileType tex          call pencil#init()
-    autocmd FileType markdown,mkd call pencil#init()
+    "autocmd FileType markdown,mkd call pencil#init()
     autocmd FileType text         call pencil#init()
 augroup END
 
