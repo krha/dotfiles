@@ -32,8 +32,8 @@ Plugin 'chrisbra/changesPlugin'
 " status/tabline for vim
 Plugin 'bling/vim-airline'
 " Git diff changes: next change ]c, previous change [c
-Plugin 'airblade/vim-gitgutter'
-let g:gitgutter_max_signs = 5000
+"Plugin 'airblade/vim-gitgutter'
+"let g:gitgutter_max_signs = 5000
 " Use Vim as a writing tool
 Plugin 'reedes/vim-pencil'
 " focus on working paragraph
