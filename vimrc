@@ -47,6 +47,8 @@ Plugin 'VOoM'
 Plugin 'git://github.com/hhvm/vim-hack.git'
 " File navigation: http://ctrlpvim.github.io/ctrlp.vim/
 Plugin 'ctrlp.vim'  " <c+p>, <c+d>, <c+j,k>
+" vim tmux integration
+Plugin 'benmills/vimux'
 
 
 " All of your Plugins must be added before the following line
@@ -252,3 +254,10 @@ nmap <F8> :Voom latex<CR>
 nnoremap <leader>f :CtrlP<CR>
 nnoremap <leader>t :CtrlPMRUFiles<CR>
 let g:ctrlp_mruf_max = 5
+
+"=============== Vimux =============="
+" Prompt for a command to run
+map rp :VimuxPromptCommand<CR>
+map rl :VimuxRunLastCommand<CR>
+map rq :VimuxCloseRunner<CR>
+map rs :VimuxInterruptRunner<CR>
