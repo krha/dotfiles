@@ -17,7 +17,7 @@ Plugin 'junegunn/seoul256.vim'
 " comment shortcut using gc
 Plugin 'tpope/vim-commentary'
 " Python Auto-completion
-Plugin 'davidhalter/jedi-vim'
+"Plugin 'davidhalter/jedi-vim'
 " Markdown
 Plugin 'godlygeek/tabular'
 " Python collection
@@ -45,7 +45,8 @@ Plugin 'beloglazov/vim-online-thesaurus'
 Plugin 'VOoM'
 " HHVM Hack plugin
 Plugin 'git://github.com/hhvm/vim-hack.git'
-
+" File navigation: http://ctrlpvim.github.io/ctrlp.vim/
+Plugin 'ctrlp.vim'  " <c+p>, <c+d>, <c+j,k>
 
 
 " All of your Plugins must be added before the following line
@@ -247,4 +248,7 @@ let g:voom_tree_width = 30
 "let g:voom_tree_height = 40
 nmap <F8> :Voom latex<CR>
 
-
+"=============== CtrlP =============="
+nnoremap <leader>f :CtrlP<CR>
+nnoremap <leader>t :CtrlPMRUFiles<CR>
+let g:ctrlp_mruf_max = 5
