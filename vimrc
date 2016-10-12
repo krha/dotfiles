@@ -49,6 +49,8 @@ Plugin 'git://github.com/hhvm/vim-hack.git'
 Plugin 'ctrlp.vim'  " <c+p>, <c+d>, <c+j,k>
 " vim tmux integration
 Plugin 'benmills/vimux'
+" Keyboard shortcut to move around text
+Plugin 'EasyMotion'
 
 
 " All of your Plugins must be added before the following line
